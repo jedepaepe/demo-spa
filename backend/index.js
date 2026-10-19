@@ -2,10 +2,8 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-// mauvais au niveau sécurité, il faut limiter à certains sites
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:8076' }));
 
-// HTTP Get sur la racine, la fonction donnée ici sera exécuté
 app.get('/', (request, response) => {
     response.send("Hello World");
 });
@@ -17,8 +15,5 @@ app.get('/api/products', (request, response) => {
     ]);
 });
 
-// démarre le serveur qui écoute sur port 3000
 app.listen(3000, () => console.log("API écoute sur http://localhost:3000"));
-
-
 
